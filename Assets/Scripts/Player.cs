@@ -12,6 +12,7 @@ public class Player : MonoBehaviour
     private bool attracting = false;
     private bool merged = false;
     private float movementPenalty = 1.0f;
+    private Transform otherPlayer = null; 
 
     // Start is called before the first frame update
     void Start()
@@ -46,7 +47,20 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        if (attracting)
+        //Damage player on collision
+        for (int k = 0; k < collision.contacts.Length; k++)
+        {
+
+            //Debug.Log(Vector3.Dot(transform.forward, collision.contacts[k].normal));
+
+            if (Vector3.Dot(-transform.forward, collision.contacts[k].normal) >= 0.9)
+            {
+                Debug.Log("Player was damaged");
+            }
+        }
+
+        //Merge players on contact
+        if (attracting && collision.gameObject.name == otherPlayer.name)
         {
             pManager.Merge(this.gameObject);
             attracting = false;
@@ -55,6 +69,7 @@ public class Player : MonoBehaviour
 
     public void Attract(Transform pTransform)
     {
+        otherPlayer = pTransform;
         attracting = true;
         Vector3 toPlayer = (pTransform.position - transform.position).normalized;
         rBody.AddForce(40 * toPlayer - rBody.velocity/2);

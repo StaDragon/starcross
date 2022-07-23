@@ -33,16 +33,16 @@ public class PlayerManager : MonoBehaviour
         playerMiddle = (players[0].transform.position + players[1].transform.position) / 2;
         debugMiddle.transform.position = playerMiddle;
 
-        Debug.Log(dualButtonSuccess);
+        //Debug.Log(dualButtonSuccess);
 
         if(buttonDualHold == 2 && !dualButtonSuccess)
         {
-            Debug.Log("DualButton Action");
+            //Debug.Log("DualButton Action");
             dualButtonSuccess = true;
 
             if (!playersCombined)
             {
-                Debug.Log("Merge");
+                //Debug.Log("Merge");
                 playersAttracting = true;
             }
             else
@@ -87,7 +87,7 @@ public class PlayerManager : MonoBehaviour
 
         playersAttracting = false;
         playersCombined = true;
-        Debug.Log("Players should merge: " + p.name);
+        //Debug.Log("Players should merge: " + p.name);
 
         if(players[0].GetComponent<FixedJoint>() == null)
         {
