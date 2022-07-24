@@ -8,6 +8,7 @@ public class ObstacleSpawner : MonoBehaviour
     public GameObject[] obstacles;
     public bool spawnContinuous;
     public float spawnFrequency = 5f;
+    public float distFromCentre = 10f;
 
 
     private float timer = 0;
@@ -31,11 +32,29 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 timer = 0f;
 
-                int randInt = (int)Random.Range(0,obstacles.Length - 0.1f);
+                int randInt0 = Random.Range(0,obstacles.Length - 1);
 
-                GameObject obstacle = obstacles[randInt];
+                GameObject obstacle = obstacles[randInt0];
 
-                obstacle.transform.position = new Vector3(0,0,transform.position.z);
+                int randInt1 = Random.Range(0, 3);
+
+                switch (randInt1)
+                {
+                    case 0:
+                        obstacle.transform.position = new Vector3(distFromCentre, 0, transform.position.z);
+                        break;
+                    case 1:
+                        obstacle.transform.position = new Vector3(0, distFromCentre, transform.position.z);
+                        break;
+                    case 2:
+                        obstacle.transform.position = new Vector3(-distFromCentre, 0, transform.position.z);
+                        break;
+                    default:
+                        obstacle.transform.position = new Vector3(0, -distFromCentre, transform.position.z);
+                        break;
+                }
+
+                
 
                 Instantiate(obstacle);
             }
