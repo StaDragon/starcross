@@ -53,7 +53,7 @@ public class Obstacle : MonoBehaviour
 
         if(transform.position.z < -40)
         {
-            Destroy(this);
+            Destroy(this.gameObject);
         }
     }
 }

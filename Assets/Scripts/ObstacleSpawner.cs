@@ -29,13 +29,15 @@ public class ObstacleSpawner : MonoBehaviour
 
             if (timer > spawnFrequency)
             {
+                timer = 0f;
+
                 int randInt = (int)Random.Range(0,obstacles.Length - 0.1f);
 
                 GameObject obstacle = obstacles[randInt];
 
-                obstacle.transform.position = new Vector3(,,transform.position.z);
+                obstacle.transform.position = new Vector3(0,0,transform.position.z);
 
-                Instantiate()
+                Instantiate(obstacle);
             }
         }
     }
