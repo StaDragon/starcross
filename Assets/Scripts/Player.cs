@@ -12,13 +12,15 @@ public class Player : MonoBehaviour
     private bool attracting = false;
     private bool merged = false;
     private float movementPenalty = 1.0f;
-    private Transform otherPlayer = null; 
+    private Transform otherPlayer = null;
+    private GameManager gameManager;
 
     // Start is called before the first frame update
     void Start()
     {
         rBody = GetComponent<Rigidbody>();
         pManager = FindObjectOfType<PlayerManager>();
+        gameManager = FindObjectOfType<GameManager>();
     }
 
     // Update is called once per frame
@@ -47,15 +49,24 @@ public class Player : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
+        
         //Damage player on collision
         for (int k = 0; k < collision.contacts.Length; k++)
         {
-
             //Debug.Log(Vector3.Dot(transform.forward, collision.contacts[k].normal));
 
             if (Vector3.Dot(-transform.forward, collision.contacts[k].normal) >= 0.9)
             {
-                Debug.Log("Player was damaged");
+                if (merged)
+                {
+                    pManager.Split();
+                    collision.collider.enabled = false;
+                    pManager.invunerable = true;
+                }
+                else if(!pManager.invunerable)
+                {
+                    gameManager.EndGame();
+                }
             }
         }
 
@@ -64,6 +75,7 @@ public class Player : MonoBehaviour
         {
             pManager.Merge(this.gameObject);
             attracting = false;
+
         }
     }
 
@@ -73,5 +85,10 @@ public class Player : MonoBehaviour
         attracting = true;
         Vector3 toPlayer = (pTransform.position - transform.position).normalized;
         rBody.AddForce(40 * toPlayer - rBody.velocity/2);
+    }
+
+    public void SetMerged(bool value)
+    {
+        merged = value;
     }
 }
