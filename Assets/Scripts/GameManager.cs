@@ -21,6 +21,8 @@ public class GameManager : MonoBehaviour
     private float endTimer;
     private float scoreTimer;
 
+    private bool paused;
+
 
     // Start is called before the first frame update
     void Start()
@@ -48,6 +50,20 @@ public class GameManager : MonoBehaviour
             if(endTimer > endTime)
             {
                 SceneManager.LoadScene(0);
+            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Tab))
+        {
+            if (!paused)
+            {
+                Pause();
+                paused = true;
+            }
+            else
+            {
+                UnPause();
+                paused = false;
             }
         }
 

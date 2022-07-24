@@ -16,6 +16,7 @@ public class PlayerManager : MonoBehaviour
     private Vector3 playerMiddle;
     private FixedJoint joint;
 
+
     private int buttonDualHold = 0;
     private bool dualButtonSuccess = false;
 
