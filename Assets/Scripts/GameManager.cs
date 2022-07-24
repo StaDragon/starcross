@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -9,12 +10,16 @@ public class GameManager : MonoBehaviour
 
     public GameObject endScreen;
     public GameObject pauseScreen;
+    public Text scoreIndicator;
+
+    private int Score = 0;
 
     private PlayerManager pManager;
     private Player[] players;
 
     private bool gameEndTime;
     private float endTimer;
+    private float scoreTimer;
 
 
     // Start is called before the first frame update
@@ -27,6 +32,14 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+        if (pManager.playersCombined)
+        {
+            scoreTimer += Time.deltaTime;
+
+            Score = (int)scoreTimer;
+            scoreIndicator.text = Score.ToString();
+        }
 
         if (gameEndTime)
         {

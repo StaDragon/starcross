@@ -5,9 +5,9 @@ using UnityEngine;
 public class PlayerManager : MonoBehaviour
 {
     public GameObject debugMiddle;
+    public bool playersCombined = false;
     public bool invunerable;
 
-    private bool playersCombined = false;
     private bool playersAttracting = false;
     private Player[] players;
     private Rigidbody[] rBodies;
