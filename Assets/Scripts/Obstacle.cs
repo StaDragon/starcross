@@ -27,7 +27,7 @@ public class Obstacle : MonoBehaviour
         if ((transform.position.x > -thresholdSide && transform.position.x < thresholdSide) &&
             (transform.position.y > -thresholdSide && transform.position.y < thresholdSide))
         {
-            transform.position = new Vector3(transform.position.x, transform.position.y, frontDisplacement);
+            transform.position = new Vector3(0, 0, frontDisplacement);
         }
         else
         {
@@ -51,7 +51,9 @@ public class Obstacle : MonoBehaviour
             }
         }
 
-
-
+        if(transform.position.z < -40)
+        {
+            Destroy(this);
+        }
     }
 }

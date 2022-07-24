@@ -1577,6 +1577,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: ObstacleScreen_001
       objectReference: {fileID: 0}
+    - target: {fileID: 5410894921889843041, guid: 4536e41e805d04ceab9f8653906ca5b4,
+        type: 3}
+      propertyPath: thresholdSide
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 5410894921889843041, guid: 4536e41e805d04ceab9f8653906ca5b4,
+        type: 3}
+      propertyPath: sideSpeed
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6427187690959571359, guid: 4536e41e805d04ceab9f8653906ca5b4,
         type: 3}
       propertyPath: m_LocalPosition.x

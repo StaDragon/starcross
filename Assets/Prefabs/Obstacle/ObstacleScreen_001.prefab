@@ -218,7 +218,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sideSpeed: 10
   frontSpeed: 40
-  thresholdSide: 0.01
+  thresholdSide: 0.1
 --- !u!1 &7639169131133691726
 GameObject:
   m_ObjectHideFlags: 0
