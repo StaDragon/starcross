@@ -54,7 +54,22 @@ public class ObstacleSpawner : MonoBehaviour
                         break;
                 }
 
-                
+                int randInt2 = Random.Range(0, 3);
+                switch (randInt2)
+                {
+                    case 0:
+                        obstacle.transform.localScale = new Vector3(1, 1, 1);
+                        break;
+                    case 1:
+                        obstacle.transform.localScale = new Vector3(-1, -1, 1);
+                        break;
+                    case 2:
+                        obstacle.transform.localScale = new Vector3(-1, 1, 1);
+                        break;
+                    default:
+                        obstacle.transform.localScale = new Vector3(1, -1, 1);
+                        break;
+                }
 
                 Instantiate(obstacle);
             }
