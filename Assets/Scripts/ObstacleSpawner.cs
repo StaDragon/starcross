@@ -32,7 +32,7 @@ public class ObstacleSpawner : MonoBehaviour
             {
                 timer = 0f;
 
-                int randInt0 = Random.Range(0,obstacles.Length - 1);
+                int randInt0 = Random.Range(0,obstacles.Length);
 
                 GameObject obstacle = obstacles[randInt0];
 
